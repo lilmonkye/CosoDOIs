@@ -17,6 +17,7 @@ class UsuarioController extends Controller
         //
         $datos['usuarios']=Usuario::paginate(1);
         return view('usuario.index',$datos);
+        //return view('home');
     }
 
     /**
@@ -72,6 +73,7 @@ class UsuarioController extends Controller
     public function show(Usuario $usuario)
     {
         //
+
     }
 
     /**

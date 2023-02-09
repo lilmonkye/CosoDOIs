@@ -18,16 +18,22 @@ use Illuminate\Support\Facades\Auth;
 Route::get('/', function () {
     return view('auth.login');
 });
-
+Route::get('/', function () {
+    return view('register');
+});
 /*Route::get('/usuario', function () {
    return view('usuario.index');
 });
 
 Route::get('/usuario/create',[UsuarioController::class,'create']);
+
 */
+
+
 Route::resource('usuario',UsuarioController::class)->middleware('auth');
 
 Auth::routes(['register'=>false]);
+Route::redirect('/home', '/login');
 
 //Route::resource('usuario',UsuarioController::class);
 
@@ -36,6 +42,6 @@ Route::get('/home', [UsuarioController::class, 'index'])->name('home');
 Route::group(['middleware' => 'auth'], function(){
 
     Route::get('/', [UsuarioController::class, 'index'])->name('home');
-
+    Route::resource('home', HomeController::class);
 });
 
